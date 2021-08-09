@@ -9,7 +9,8 @@ namespace LinqAddressBook
             Console.WriteLine("Welcome To AddressBook Table");
            // AddresBookManager.createDataTable();
             AddresBookManager manager = new AddresBookManager();
-            manager.EditData("Vivek");
+           // manager.EditData("Vivek");
+            manager.DeleteContact("Aditya");
         }
     }
 }

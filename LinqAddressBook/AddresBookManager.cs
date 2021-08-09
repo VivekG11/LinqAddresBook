@@ -53,6 +53,27 @@ namespace LinqAddressBook
                 Console.WriteLine("No data Exists with given input..");
             }
         }
+
+        public void DeleteContact(string name)
+        {
+
+            //creating object for AddressBookDataClass
+            AddressBookData data = new AddressBookData();
+            createDataTable();
+            //Finding specific row based on given Name 
+            var result = (from person in dataTable.AsEnumerable() where person.Field<string>("firstName").Equals(name) select person).LastOrDefault();
+            if (result != null)
+            {
+                //Delete the column you want to ......
+                result.Delete();
+                Console.WriteLine("After Modification....");
+                DisplayTbale(dataTable);
+            }
+            else
+            {
+                Console.WriteLine("No data Exists with given input..");
+            }
+        }
         public static void DisplayTbale(DataTable dataTable)
         {
             Console.WriteLine("Contacts in the table are..... ");

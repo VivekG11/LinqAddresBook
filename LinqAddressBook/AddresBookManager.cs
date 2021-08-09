@@ -74,6 +74,31 @@ namespace LinqAddressBook
                 Console.WriteLine("No data Exists with given input..");
             }
         }
+
+        public void RetrieveBasedOnCityOrState(string cityName,string stateName)
+        {
+
+            //creating object for AddressBookDataClass
+            AddressBookData data = new AddressBookData();
+            createDataTable();
+            //Finding specific row based on given Name 
+            var result = (from person in dataTable.AsEnumerable() where (person.Field<string>("city").Equals(cityName)  || person.Field<string>("state").Equals(stateName))select person);
+            if (result != null)
+            {
+                //printing contact names present in a specific area
+                foreach (DataRow i in result)
+                {
+                    Console.WriteLine($"{i["firstName"]}");
+                }
+
+                // Console.WriteLine("After Modification....");
+                //DisplayTbale(dataTable);
+            }
+            else
+            {
+                Console.WriteLine("No data Exists with given input..");
+            }
+        }
         public static void DisplayTbale(DataTable dataTable)
         {
             Console.WriteLine("Contacts in the table are..... ");

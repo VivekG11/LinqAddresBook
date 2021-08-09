@@ -119,6 +119,20 @@ namespace LinqAddressBook
                 Console.WriteLine("No data Exists with given input..");
             }
         }
+
+        public void RetrieveCount(string cityName)
+        {
+            createDataTable();
+            var res = (from contact in dataTable.AsEnumerable() where contact.Field<string>("city").Equals(cityName) select contact).ToList().Count;
+            if(res != 0)
+            {
+                Console.WriteLine(res);
+            }
+            else
+            {
+                Console.WriteLine("No contacts exist");
+            }
+        }
         public static void DisplayTbale(DataTable dataTable)
         {
             Console.WriteLine("Contacts in the table are..... ");

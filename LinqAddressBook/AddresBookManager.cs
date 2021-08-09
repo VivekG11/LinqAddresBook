@@ -8,11 +8,11 @@ namespace LinqAddressBook
 {
     public class AddresBookManager
     {
-        
-        public static void createDataTable()
+        DataTable dataTable;
+        public  void createDataTable()
         {
             //creating datatable 
-            DataTable dataTable = new DataTable();
+             dataTable = new DataTable();
             //Adding columns
             dataTable.Columns.Add("firstName", typeof(string));
             dataTable.Columns.Add("lastName", typeof(string));
@@ -31,7 +31,27 @@ namespace LinqAddressBook
             {"Aditya","S","Sironcha","Gdcl","Maharastra",9959934,89041,"Aditya7114@gmail.com"});
 
             //Displaying contacts in the datatable
-            DisplayTbale(dataTable);
+           // DisplayTbale(dataTable);
+        }
+
+        public  void EditData(string name)
+        {
+            //creating object for AddressBookDataClass
+            AddressBookData data = new AddressBookData();
+            createDataTable();
+            //Finding specific row based on given Name 
+            var result = (from person in  dataTable.AsEnumerable() where person.Field<string>("firstName").Equals(name) select person).LastOrDefault();
+            if(result != null)
+            {
+                //Edit the column you want to ......
+                result["lastName"] = "Guntuku";
+                Console.WriteLine("After Modification....");
+                DisplayTbale(dataTable);
+            }
+            else
+            {
+                Console.WriteLine("No data Exists with given input..");
+            }
         }
         public static void DisplayTbale(DataTable dataTable)
         {

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Data;
 using System.Text;
 
 namespace LinqAddressBook
 {
-    class AddressBookData
+   public  class AddressBookData
     {
         public string firstName { get; set; }
         public string lastName { get; set; }

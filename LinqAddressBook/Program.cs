@@ -10,8 +10,9 @@ namespace LinqAddressBook
            // AddresBookManager.createDataTable();
             AddresBookManager manager = new AddresBookManager();
             // manager.EditData("Vivek");
-            //manager.DeleteContact("Aditya");
-            manager.RetrieveBasedOnCityOrState("Seema","Ap");
+            manager.DeleteContact("Kumar");
+            // manager.RetrieveBasedOnCityOrState("Seema","Ap");
+           // manager.RetrieveAlphabatically("Pdpl");
         }
     }
 }

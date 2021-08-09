@@ -89,10 +89,30 @@ namespace LinqAddressBook
                 foreach (DataRow i in result)
                 {
                     Console.WriteLine($"{i["firstName"]}");
-                }
+                }            
+            }
+            else
+            {
+                Console.WriteLine("No data Exists with given input..");
+            }
+        }
 
-                // Console.WriteLine("After Modification....");
-                //DisplayTbale(dataTable);
+        public void RetrieveAlphabatically(string cityName)
+        {
+
+            //creating object for AddressBookDataClass
+            AddressBookData data = new AddressBookData();
+            createDataTable();
+            //Finding specific row based on given Name 
+            var result = (from person in dataTable.AsEnumerable() orderby person.Field<string>("firstName") where (person.Field<string>("city").Equals(cityName)) select person);
+            if (result != null)
+            {
+                Console.WriteLine("Contacts Present in a specific area are...");
+                //printing contact names in alphabatical order present in a specific area
+                foreach (DataRow i in result)
+                {
+                    Console.WriteLine($"{i["firstName"]} : {i["city"]}");
+                }
             }
             else
             {
